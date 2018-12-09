@@ -29,7 +29,7 @@ const styles = {
   inputStyle: {
     color: '#808080',
     paddingRight: 5,
-    paddingLeft: 25,
+    paddingLeft: 15,
     fontSize: 15,
     lineHeight: 23,
     flex: 1,
