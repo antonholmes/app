@@ -1,6 +1,10 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { BUILDING_UPDATE, BUILDING_CREATE } from './types';
+import {
+  BUILDING_UPDATE,
+  BUILDING_CREATE,
+  BUILDINGS_FETCH_SUCCESS,
+} from './types';
 
 export const buildingUpdate = ({ prop, value }) => {
   return {
@@ -19,4 +23,17 @@ export const buildingCreate = ({ name, phone, borough }) => {
       dispatch({ type: BUILDING_CREATE });
       Actions.pop();
     });
+};
+
+export const buildingsFetch = () => {
+  const { currentUser } = firebase.auth();
+
+  return dispatch => {
+    firebase
+      .database()
+      .ref(`/users/${currentUser.uid}/buildings`)
+      .on('value', snapshot => {
+        dispatch({ type: BUILDINGS_FETCH_SUCCESS, payload: snapshot.val() });
+      });
+  };
 };
