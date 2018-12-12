@@ -1,10 +1,13 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { ListView, View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { ListView } from 'react-native';
 import { buildingsFetch } from '../actions';
+import ListItem from './ListItem';
 
 class BuildingList extends Component {
   componentWillMount() {
-    this.props.employeesFetch();
+    this.props.buildingsFetch();
     this.createDataSource(this.props);
   }
 
@@ -19,21 +22,29 @@ class BuildingList extends Component {
     this.dataSource = ds.cloneWithRows(buildings);
   }
 
+  renderRow(building) {
+    return <ListItem building={building} />;
+  }
+
   render() {
     return (
-      <View>
-        <Text>Building</Text>
-        <Text>Building</Text>
-        <Text>Building</Text>
-        <Text>Building</Text>
-        <Text>Building</Text>
-        <Text>Building</Text>
-      </View>
+      <ListView
+        enableEmptySections
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+      />
     );
   }
 }
 
+const mapStateToProps = state => {
+  const buildings = _.map(state.buildings, (val, uid) => {
+    return { ...val, uid };
+  });
+  return { buildings };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { buildingsFetch }
 )(BuildingList);
