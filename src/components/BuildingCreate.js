@@ -29,7 +29,7 @@ class BuildingCreate extends Component {
 
 const mapStateToProps = state => {
   const { name, phone, borough } = state.buildingForm;
-
+g
   return { name, phone, borough };
 };
 
