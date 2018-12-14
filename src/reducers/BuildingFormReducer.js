@@ -1,4 +1,8 @@
-import { BUILDING_UPDATE, BUILDING_CREATE } from '../actions/types';
+import {
+  BUILDING_UPDATE,
+  BUILDING_CREATE,
+  BUILDING_SAVE_SUCCESS,
+} from '../actions/types';
 
 const INITIAL_STATE = {
   name: '',
@@ -11,6 +15,8 @@ export default (state = INITIAL_STATE, action) => {
     case BUILDING_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
     case BUILDING_CREATE:
+      return INITIAL_STATE;
+    case BUILDING_SAVE_SUCCESS:
       return INITIAL_STATE;
     default:
       return state;
