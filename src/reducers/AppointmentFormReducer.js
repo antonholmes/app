@@ -8,7 +8,6 @@ const INITIAL_STATE = {
   name: '',
   phone: '',
   day: '',
-  time: '',
 };
 
 export default (state = INITIAL_STATE, action) => {

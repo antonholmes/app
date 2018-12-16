@@ -14,13 +14,13 @@ export const appointmentUpdate = ({ prop, value }) => {
   };
 };
 
-export const appointmentCreate = ({ name, phone, day, time }) => {
+export const appointmentCreate = ({ name, phone, day }) => {
   const { currentUser } = firebase.auth();
   return dispatch => {
     firebase
       .database()
       .ref(`/users/${currentUser.uid}/appointments`)
-      .push({ name, phone, day, time })
+      .push({ name, phone, day })
       .then(() => {
         dispatch({ type: APPOINTMENT_CREATE });
         Actions.pop();
@@ -41,14 +41,14 @@ export const appointmentsFetch = () => {
   };
 };
 
-export const appointmentSave = ({ name, phone, day, time, uid }) => {
+export const appointmentSave = ({ name, phone, day, uid }) => {
   const { currentUser } = firebase.auth();
 
   return dispatch => {
     firebase
       .database()
       .ref(`users/${currentUser.uid}/appointments/${uid}`)
-      .set({ name, phone, day, time })
+      .set({ name, phone, day })
       .then(() => {
         dispatch({ type: APPOINTMENT_SAVE_SUCCESS });
         Actions.appointmentList({ type: 'reset' });

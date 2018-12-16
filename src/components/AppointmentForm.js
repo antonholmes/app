@@ -11,7 +11,7 @@ class AppointmentForm extends Component {
         <CardSection>
           <Input
             label="Name"
-            placeholder="Asset User"
+            placeholder="Building"
             value={this.props.name}
             onChangeText={value =>
               this.props.appointmentUpdate({ prop: 'name', value })
@@ -61,8 +61,8 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  const { name, phone, day, time } = state.appointmentForm;
-  return { name, phone, day, time };
+  const { name, phone, day } = state.appointmentForm;
+  return { name, phone, day };
 };
 
 export default connect(

@@ -31,11 +31,11 @@ class AppointmentEdit extends Component {
   }
 
   onTextPress() {
-    const { name, phone, day, time } = this.props;
+    const { name, phone, day } = this.props;
 
     Communications.text(
       phone,
-      `You have an appointment with ${name} scheduled on ${day}, ${time}.`
+      `You have an appointment with ${name} scheduled on ${day}.`
     );
   }
 
@@ -85,9 +85,9 @@ class AppointmentEdit extends Component {
 }
 
 const mapStateToProps = state => {
-  const { name, phone, day, time } = state.appointmentForm;
+  const { name, phone, day } = state.appointmentForm;
 
-  return { name, phone, day, time };
+  return { name, phone, day };
 };
 
 export default connect(

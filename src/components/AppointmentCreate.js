@@ -6,7 +6,7 @@ import AppointmentForm from './AppointmentForm';
 
 class AppointmentCreate extends Component {
   onButtonPress() {
-    const { name, phone, borough } = this.props;
+    const { name, phone, day } = this.props;
 
     this.props.appointmentCreate({
       name,
@@ -28,9 +28,9 @@ class AppointmentCreate extends Component {
 }
 
 const mapStateToProps = state => {
-  const { name, phone, day, time } = state.appointmentForm;
+  const { name, phone, day } = state.appointmentForm;
 
-  return { name, phone, day, time };
+  return { name, phone, day };
 };
 
 export default connect(

@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import AppointmentList from './components/AppointmentList';
 import AppointmentCreate from './components/AppointmentCreate';
 import AppointmentEdit from './components/AppointmentEdit';
+import Home from './components/Home';
 
 const RouterComponent = () => {
   return (
@@ -13,11 +14,16 @@ const RouterComponent = () => {
           <Scene
             key="login"
             component={LoginForm}
-            leftButtonImage="../assets/images/logo-login.png"
+            leftButtonImage={require('../assets/images/logo-login.png')}
             title="ASSET"
             initial
           />
         </Scene>
+
+        {/* <Scene key="main" hideNavBar>
+          <Scene component={Home} />
+        </Scene> */}
+
         <Scene key="main">
           <Scene
             rightTitle="Add"
