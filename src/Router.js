@@ -13,7 +13,8 @@ const RouterComponent = () => {
           <Scene
             key="login"
             component={LoginForm}
-            title="Please Login"
+            leftButtonImage="../assets/images/logo-login.png"
+            title="Asset"
             initial
           />
         </Scene>

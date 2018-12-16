@@ -29,7 +29,7 @@ const styles = {
   inputStyle: {
     color: '#808080',
     paddingRight: 5,
-    paddingLeft: 15,
+    paddingLeft: 10,
     fontSize: 15,
     lineHeight: 23,
     flex: 1,
@@ -37,7 +37,7 @@ const styles = {
   labelStyle: {
     color: '#808080',
     fontSize: 12,
-    paddingLeft: 20,
+    paddingLeft: 9,
     flex: 1,
   },
   containerStyle: {
