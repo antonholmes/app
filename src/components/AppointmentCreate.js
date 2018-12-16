@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { buildingUpdate, buildingCreate } from '../actions';
+import { appointmentUpdate, appointmentCreate } from '../actions';
 import { Card, CardSection, Button } from './common';
-import BuildingForm from './BuildingForm';
+import AppointmentForm from './AppointmentForm';
 
-class BuildingCreate extends Component {
+class AppointmentCreate extends Component {
   onButtonPress() {
     const { name, phone, borough } = this.props;
 
-    this.props.buildingCreate({
+    this.props.appointmentCreate({
       name,
       phone,
-      borough: borough || 'Manhattan',
+      day: day || 'Monday',
     });
   }
 
   render() {
     return (
       <Card>
-        <BuildingForm {...this.props} />
+        <AppointmentForm {...this.props} />
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Create</Button>
         </CardSection>
@@ -28,12 +28,12 @@ class BuildingCreate extends Component {
 }
 
 const mapStateToProps = state => {
-  const { name, phone, borough } = state.buildingForm;
+  const { name, phone, day, time } = state.appointmentForm;
 
-  return { name, phone, borough };
+  return { name, phone, day, time };
 };
 
 export default connect(
   mapStateToProps,
-  { buildingUpdate, buildingCreate }
-)(BuildingCreate);
+  { appointmentUpdate, appointmentCreate }
+)(AppointmentCreate);

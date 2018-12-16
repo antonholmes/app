@@ -5,11 +5,11 @@ import { CardSection } from './common';
 
 class ListItem extends Component {
   onRowPress() {
-    Actions.buildingEdit({ building: this.props.building });
+    Actions.appointmentEdit({ appointment: this.props.appointment });
   }
 
   render() {
-    const { name } = this.props.building;
+    const { name } = this.props.appointment;
 
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>

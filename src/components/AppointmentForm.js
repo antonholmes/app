@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
-import { buildingUpdate } from '../actions';
+import { appointmentUpdate } from '../actions';
 import { CardSection, Input } from './common';
 
-class BuildingForm extends Component {
+class AppointmentForm extends Component {
   render() {
     return (
       <View>
         <CardSection>
           <Input
             label="Name"
-            placeholder="New York City"
+            placeholder="Asset User"
             value={this.props.name}
             onChangeText={value =>
-              this.props.buildingUpdate({ prop: 'name', value })
+              this.props.appointmentUpdate({ prop: 'name', value })
             }
           />
         </CardSection>
@@ -25,25 +25,27 @@ class BuildingForm extends Component {
             placeholder="123-456-7890"
             value={this.props.phone}
             onChangeText={value =>
-              this.props.buildingUpdate({ prop: 'phone', value })
+              this.props.appointmentUpdate({ prop: 'phone', value })
             }
           />
         </CardSection>
 
         <CardSection style={{ flexDirection: 'column' }}>
-          <Text style={styles.pickerTextStyle}>Boroughs</Text>
+          <Text style={styles.pickerTextStyle}>Day</Text>
           <Picker
             style={{ flex: 1 }}
-            selectedValue={this.props.borough}
+            selectedValue={this.props.day}
             onValueChange={value =>
-              this.props.buildingUpdate({ prop: 'borough', value })
+              this.props.appointmentUpdate({ prop: 'day', value })
             }
           >
-            <Picker.Item label="Manhattan" value="Manhattan" />
-            <Picker.Item label="Brooklyn" value="Brooklyn" />
-            <Picker.Item label="Bronx" value="Bronx" />
-            <Picker.Item label="Queens" value="Queens" />
-            <Picker.Item label="Staten Island" value="Staten Island" />
+            <Picker.Item label="Monday" value="Monday" />
+            <Picker.Item label="Tuesday" value="Tuesday" />
+            <Picker.Item label="Wednesday" value="Wednesday" />
+            <Picker.Item label="Thursday" value="Thursday" />
+            <Picker.Item label="Friday" value="Friday" />
+            <Picker.Item label="Saturday" value="Saturday" />
+            <Picker.Item label="Sunday" value="Sunday" />
           </Picker>
         </CardSection>
       </View>
@@ -59,11 +61,11 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  const { name, phone, borough } = state.buildingForm;
-  return { name, phone, borough };
+  const { name, phone, day, time } = state.appointmentForm;
+  return { name, phone, day, time };
 };
 
 export default connect(
   mapStateToProps,
-  { buildingUpdate }
-)(BuildingForm);
+  { appointmentUpdate }
+)(AppointmentForm);

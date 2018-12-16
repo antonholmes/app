@@ -1,10 +1,10 @@
-import { BUILDINGS_FETCH_SUCCESS } from '../actions/types';
+import { APPOINTMENTS_FETCH_SUCCESS } from '../actions/types';
 
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case BUILDINGS_FETCH_SUCCESS:
+    case APPOINTMENTS_FETCH_SUCCESS:
       return action.payload;
     default:
       return state;

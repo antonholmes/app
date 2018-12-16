@@ -1,22 +1,23 @@
 import {
-  BUILDING_UPDATE,
-  BUILDING_CREATE,
-  BUILDING_SAVE_SUCCESS,
+  APPOINTMENT_UPDATE,
+  APPOINTMENT_CREATE,
+  APPOINTMENT_SAVE_SUCCESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
   name: '',
   phone: '',
-  borough: '',
+  day: '',
+  time: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case BUILDING_UPDATE:
+    case APPOINTMENT_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
-    case BUILDING_CREATE:
+    case APPOINTMENT_CREATE:
       return INITIAL_STATE;
-    case BUILDING_SAVE_SUCCESS:
+    case APPOINTMENT_SAVE_SUCCESS:
       return INITIAL_STATE;
     default:
       return state;

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './AuthReducer';
-import BuildingFormReducer from './BuildingFormReducer';
-import BuildingReducer from './BuildingReducer';
+import AppointmentFormReducer from './AppointmentFormReducer';
+import AppointmentReducer from './AppointmentReducer';
 
 export default combineReducers({
   auth: AuthReducer,
-  buildingForm: BuildingFormReducer,
-  buildings: BuildingReducer,
+  appointmentForm: AppointmentFormReducer,
+  appointments: AppointmentReducer,
 });

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
-import BuildingList from './components/BuildingList';
-import BuildingCreate from './components/BuildingCreate';
-import BuildingEdit from './components/BuildingEdit';
+import AppointmentList from './components/AppointmentList';
+import AppointmentCreate from './components/AppointmentCreate';
+import AppointmentEdit from './components/AppointmentEdit';
 
 const RouterComponent = () => {
   return (
@@ -14,28 +14,28 @@ const RouterComponent = () => {
             key="login"
             component={LoginForm}
             leftButtonImage="../assets/images/logo-login.png"
-            title="Asset"
+            title="ASSET"
             initial
           />
         </Scene>
         <Scene key="main">
           <Scene
             rightTitle="Add"
-            onRight={() => Actions.buildingCreate()}
-            key="buildingList"
-            component={BuildingList}
-            title="Buildings"
+            onRight={() => Actions.appointmentCreate()}
+            key="appointmentList"
+            component={AppointmentList}
+            title="Appointments"
             initial
           />
           <Scene
-            key="buildingCreate"
-            component={BuildingCreate}
-            title="Create Building"
+            key="appointmentCreate"
+            component={AppointmentCreate}
+            title="Create Appointments"
           />
           <Scene
-            key="buildingEdit"
-            component={BuildingEdit}
-            title="Edit Builing"
+            key="appointmentEdit"
+            component={AppointmentEdit}
+            title="Edit Appointment"
           />
         </Scene>
       </Scene>

@@ -2,12 +2,12 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
-import { buildingsFetch } from '../actions';
+import { appointmentsFetch } from '../actions';
 import ListItem from './ListItem';
 
-class BuildingList extends Component {
+class AppointmentList extends Component {
   componentWillMount() {
-    this.props.buildingsFetch();
+    this.props.appointmentsFetch();
     this.createDataSource(this.props);
   }
 
@@ -15,15 +15,15 @@ class BuildingList extends Component {
     this.createDataSource(nextProps);
   }
 
-  createDataSource({ buildings }) {
+  createDataSource({ appointments }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
-    this.dataSource = ds.cloneWithRows(buildings);
+    this.dataSource = ds.cloneWithRows(appointments);
   }
 
-  renderRow(building) {
-    return <ListItem building={building} />;
+  renderRow(appointment) {
+    return <ListItem appointment={appointment} />;
   }
 
   render() {
@@ -38,13 +38,13 @@ class BuildingList extends Component {
 }
 
 const mapStateToProps = state => {
-  const buildings = _.map(state.buildings, (val, uid) => {
+  const appointments = _.map(state.appointments, (val, uid) => {
     return { ...val, uid };
   });
-  return { buildings };
+  return { appointments };
 };
 
 export default connect(
   mapStateToProps,
-  { buildingsFetch }
-)(BuildingList);
+  { appointmentsFetch }
+)(AppointmentList);

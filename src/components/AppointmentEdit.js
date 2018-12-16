@@ -2,43 +2,47 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Communications from 'react-native-communications';
-import BuildingForm from './BuildingForm';
-import { buildingUpdate, buildingSave, buildingDelete } from '../actions';
+import AppointmentForm from './AppointmentForm';
+import {
+  appointmentUpdate,
+  appointmentSave,
+  appointmentDelete,
+} from '../actions';
 import { Card, CardSection, Button, Confirm } from './common';
 
-class BuildingEdit extends Component {
+class AppointmentEdit extends Component {
   state = { showModal: false };
 
   componentWillMount() {
-    _.each(this.props.building, (value, prop) => {
-      this.props.buildingUpdate({ prop, value });
+    _.each(this.props.appointment, (value, prop) => {
+      this.props.appointmentUpdate({ prop, value });
     });
   }
 
   onButtonPress() {
     const { name, phone, borough } = this.props;
 
-    this.props.buildingSave({
+    this.props.appointmentSave({
       name,
       phone,
       borough,
-      uid: this.props.building.uid,
+      uid: this.props.appointment.uid,
     });
   }
 
   onTextPress() {
-    const { phone, borough } = this.props;
+    const { name, phone, day, time } = this.props;
 
     Communications.text(
       phone,
-      `Your appointment in ${borough} will be scheduled.`
+      `You have an appointment with ${name} scheduled on ${day}, ${time}.`
     );
   }
 
   onAccept() {
-    const { uid } = this.props.building;
+    const { uid } = this.props.appointment;
 
-    this.props.buildingDelete({ uid });
+    this.props.appointmentDelete({ uid });
   }
 
   onDecline() {
@@ -48,7 +52,7 @@ class BuildingEdit extends Component {
   render() {
     return (
       <Card>
-        <BuildingForm />
+        <AppointmentForm />
 
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Save Changes</Button>
@@ -81,12 +85,12 @@ class BuildingEdit extends Component {
 }
 
 const mapStateToProps = state => {
-  const { name, phone, borough } = state.buildingForm;
+  const { name, phone, day, time } = state.appointmentForm;
 
-  return { name, phone, borough };
+  return { name, phone, day, time };
 };
 
 export default connect(
   mapStateToProps,
-  { buildingUpdate, buildingSave, buildingDelete }
-)(BuildingEdit);
+  { appointmentUpdate, appointmentSave, appointmentDelete }
+)(AppointmentEdit);
