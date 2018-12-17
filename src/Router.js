@@ -5,6 +5,8 @@ import AppointmentList from './components/AppointmentList';
 import AppointmentCreate from './components/AppointmentCreate';
 import AppointmentEdit from './components/AppointmentEdit';
 import Home from './components/Home';
+import BuildingDetail from './components/BuildingDetail';
+import PostDetail from './components/PostDetail';
 
 const RouterComponent = () => {
   return (
@@ -14,17 +16,19 @@ const RouterComponent = () => {
           <Scene
             key="login"
             component={LoginForm}
-            leftButtonImage={require('../assets/images/logo-login.png')}
+            leftButtonImage={require('../assets/images/logo.png')}
             title="ASSET"
             initial
           />
         </Scene>
 
-        {/* <Scene key="main" hideNavBar>
-          <Scene component={Home} />
-        </Scene> */}
-
         <Scene key="main">
+          <Scene component={Home} initial />
+          <Scene component={BuildingDetail} />
+          <Scene component={PostDetail} />
+        </Scene>
+
+        <Scene key="next">
           <Scene
             rightTitle="Add"
             onRight={() => Actions.appointmentCreate()}
