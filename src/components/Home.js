@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import axios from 'axios';
 import BuildingDetail from './BuildingDetail';
 
-class Home extends Component {
+export default class Home extends Component {
   state = { buildings: [] };
 
   componentWillMount() {
@@ -26,4 +26,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+module.exports = Home;

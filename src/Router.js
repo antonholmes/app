@@ -23,12 +23,6 @@ const RouterComponent = () => {
         </Scene>
 
         <Scene key="main">
-          <Scene component={Home} initial />
-          <Scene component={BuildingDetail} />
-          <Scene component={PostDetail} />
-        </Scene>
-
-        <Scene key="next">
           <Scene
             rightTitle="Add"
             onRight={() => Actions.appointmentCreate()}

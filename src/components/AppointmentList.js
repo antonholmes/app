@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { ListView } from 'react-native';
 import { appointmentsFetch } from '../actions';
 import ListItem from './ListItem';
+import Footer from './common/Footer'
 
 class AppointmentList extends Component {
   componentWillMount() {
@@ -33,6 +34,7 @@ class AppointmentList extends Component {
         dataSource={this.dataSource}
         renderRow={this.renderRow}
       />
+      <Footer />
     );
   }
 }
